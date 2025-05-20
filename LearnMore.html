@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Thunder - Learn More</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+        }
+        .feature-icon {
+            width: 100%; /* Adjust width for images */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 1rem;
+        }
+        .card {
+            transition: all 0.3s;
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border-color: #555;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(209, 122, 34, 0.2);
+            border-color: #d17a22;
+        }
+        .bg-war {
+            background-color: #2c2c2c;
+        }
+        .btn-war {
+            background-color: #d17a22;
+            border-color: #d17a22;
+            color: #fff;
+        }
+        .btn-war:hover {
+            background-color: #b86a1c;
+            border-color: #b86a1c;
+            color: #fff;
+        }
+        .btn-outline-war {
+            border-color: #d17a22;
+            color: #d17a22;
+        }
+        .btn-outline-war:hover {
+            background-color: #d17a22;
+            color: #fff;
+        }
+        .text-war {
+            color: #d17a22;
+        }
+        .banner-img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+        }
+        .timeline {
+            position: relative;
+            padding: 1rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #d17a22;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            padding: 1rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: #d17a22;
+            border-radius: 50%;
+        }
+        .timeline-item:nth-child(odd) {
+            margin-right: 50%;
+            text-align: right;
+        }
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #d17a22;
+        }
+        .faq-section .card {
+            margin-bottom: 1rem;
+        }
+        .faq-section .card-header {
+            background-color: #2c2c2c;
+            border-bottom: 1px solid #555;
+        }
+        .accordion-button {
+            background-color: #2c2c2c;
+            color: #d17a22;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #3c3c3c;
+            color: #d17a22;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: #d17a22;
+        }
+        .accordion-body {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+        }
+        .accordion-item {
+            background-color: #2c2c2c;
+            border: 1px solid #555;
+            margin-bottom: 0.5rem;
+        }
+        .list-group-item {
+            border-color: #555;
+        }
+        .list-group-item.bg-dark {
+            background-color: #2c2c2c !important;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand text-war fw-bold" href="index.html">WAR THUNDER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Premium</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2 bg-dark text-light border-secondary" type="search" placeholder="Search vehicles..." aria-label="Search">
+                    <button class="btn btn-war" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Image -->
+    <div class="container-fluid p-0">
+        <img src="https://staticfiles.warthunder.com/upload/image/0_Wallpaper_Renders/Other/1920x1080_wt_11_years_dark_logo_1fb106ebe8e9d8eb5df0bef3b024c921.jpg" class="banner-img" alt="War Thunder Banner">
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="text-war mb-4">ABOUT WAR THUNDER</h1>
+                <p class="lead">War Thunder is a free-to-play, cross-platform, massively multiplayer military game dedicated to combat aircraft, armored vehicles, and naval craft from the early 20th century to the modern era.</p>
+                <p>Developed by Gaijin Entertainment, War Thunder puts you in control of the most iconic military vehicles from World War II through the Cold War and beyond. With stunning graphics, realistic physics, and historically accurate details, War Thunder offers an unparalleled combat experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Features -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">GAME FEATURES</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-war text-center">Realistic Combat</h4>
+                        <p class="card-text">Experience the most authentic combat simulator with detailed damage models, realistic ballistics, and historically accurate vehicles. Every machine gun, cannon shell, and torpedo behaves according to its real-world counterpart.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-war text-center">Massive Vehicle Selection</h4>
+                        <p class="card-text">Choose from over 2,000 meticulously detailed aircraft, tanks, helicopters, and ships from the major combat theaters of the 20th century. Each vehicle is reconstructed with precision based on historical documents.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-war text-center">Multiple Game Modes</h4>
+                        <p class="card-text">Play casual in Arcade mode with simplified flight and driving mechanics, challenge yourself in the more realistic Realistic Battles, or test your skills in the unforgiving Simulator Battles with full real-world physics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modes Section -->
+    <div class="container mb-5 bg-war p-4 rounded">
+        <h2 class="text-center text-war mb-4">GAME MODES</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-war">Arcade Battles</h4>
+                        <p class="card-text">Fast-paced action with simplified flight and physics models. Perfect for beginners and casual gameplay sessions. Features include markers for enemies, simplified damage models, and unlimited ammunition.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-light">Fast-paced gameplay</li>
+                            <li class="list-group-item bg-dark text-light">Enemy markers visible</li>
+                            <li class="list-group-item bg-dark text-light">Simplified controls</li>
+                            <li class="list-group-item bg-dark text-light">Respawns available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-war">Realistic Battles</h4>
+                        <p class="card-text">A balance between accessibility and realism. More authentic physics and damage models, limited ammunition, and fewer visual aids. The most popular mode among War Thunder players.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-light">Realistic physics</li>
+                            <li class="list-group-item bg-dark text-light">Limited enemy markers</li>
+                            <li class="list-group-item bg-dark text-light">Historical matchmaking</li>
+                            <li class="list-group-item bg-dark text-light">Limited ammunition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title text-war">Simulator Battles</h4>
+                        <p class="card-text">The most realistic experience possible. Full simulation physics, no visual aids or enemy markers, limited views, and first-person-only perspective. For veterans seeking the ultimate challenge.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-light">Full simulation physics</li>
+                            <li class="list-group-item bg-dark text-light">No enemy markers</li>
+                            <li class="list-group-item bg-dark text-light">First-person view only</li>
+                            <li class="list-group-item bg-dark text-light">Real cockpit controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">WAR THUNDER BY THE NUMBERS</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="stat-card bg-war">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Combat Vehicles</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card bg-war">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Battle Maps</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card bg-war">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Major Nations</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card bg-war">
+                    <div class="stat-number">25M+</div>
+                    <div class="stat-label">Players Worldwide</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Development Timeline -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">DEVELOPMENT HISTORY</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h5 class="text-war">2012</h5>
+                <p>War Thunder announced and entered closed beta testing with only aircraft available.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2013</h5>
+                <p>Official release and launch on Steam. The game featured primarily air combat with over 200 aircraft.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2014</h5>
+                <p>Ground Forces expansion released, introducing tanks and other armored vehicles to the game.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2016</h5>
+                <p>Introduction of new nations including Italy and France, expanding the vehicle roster significantly.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2018</h5>
+                <p>Naval Forces update launched, adding ships and naval combat to War Thunder's combined arms warfare.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2020</h5>
+                <p>New Engine introduced with significantly improved graphics, lighting, and physics systems.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2022</h5>
+                <p>Modern combat expansion featuring contemporary military vehicles and advanced weaponry.</p>
+            </div>
+            <div class="timeline-item">
+                <h5 class="text-war">2024</h5>
+                <p>War Thunder continues to expand with new vehicles, nations, and gameplay features.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container mb-5 faq-section">
+        <h2 class="text-center text-war mb-4">FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Is War Thunder really free to play?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, War Thunder is completely free to play. All vehicles, maps, and game modes are accessible without spending any money. Premium features are available for purchase to accelerate progression or add exclusive vehicles, but they're not necessary to enjoy the full game experience.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What are the system requirements?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Minimum Requirements:</strong>
+                        <ul>
+                            <li>OS: Windows 7/8/10</li>
+                            <li>Processor: 2.2 GHz</li>
+                            <li>Memory: 4 GB RAM</li>
+                            <li>Graphics: DirectX 10.1 compatible with 512 MB VRAM</li>
+                            <li>Storage: 17 GB available space</li>
+                        </ul>
+                        <strong>Recommended Requirements:</strong>
+                        <ul>
+                            <li>OS: Windows 10 64-bit</li>
+                            <li>Processor: Intel Core i5 or better</li>
+                            <li>Memory: 8 GB RAM</li>
+                            <li>Graphics: DirectX 11 compatible with 2 GB VRAM</li>
+                            <li>Storage: 17 GB available space</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        How do I earn new vehicles?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You earn research points (RP) and Silver Lions (SL) by participating in battles. Research points unlock new vehicles, while Silver Lions are used to purchase them and pay for repairs and ammunition. Progression is organized in tiers, with each nation having its own research tree. Complete matches, accomplish objectives, and destroy enemy vehicles to progress faster.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        What's the difference between Premium and Regular accounts?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Premium accounts provide boosted research points and Silver Lions earnings (typically +50%), access to premium missions and events, and additional in-game bonuses. Premium accounts are time-limited subscriptions that help players progress faster through the research trees, but don't provide any combat advantages in battles themselves.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Is War Thunder available on consoles?
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, War Thunder is available on PlayStation, Xbox, and PC with cross-platform play enabled. You can play with friends regardless of their platform, and your account progress can be transferred between platforms (with some restrictions for console accounts).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="container mb-5">
+        <div class="card bg-war">
+            <div class="card-body py-5 text-center">
+                <h2 class="text-war mb-3">READY FOR BATTLE?</h2>
+                <p class="lead mb-4">Join over 25 million players worldwide in the ultimate military combat game. Start your journey now!</p>
+                <a href="https://warthunder.com/en" class="btn btn-war btn-lg me-2">Download Now</a>
+                <a href="#" class="btn btn-outline-light btn-lg">Join Community</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-war">War Thunder - Praktikum Bootstrap</h5>
+                    <p>Tugas Framework Bootstrap - Pemrograman Web</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-war">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Download</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Support</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Community</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <p>&copy; 2025 - War Thunder Project</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Optional: jQuery Slim -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</body>
+</html>

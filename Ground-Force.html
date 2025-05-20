@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Thunder - Ground Forces</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+        }
+        .feature-icon {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .card {
+            transition: all 0.3s;
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border-color: #555;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(209, 122, 34, 0.2);
+            border-color: #d17a22;
+        }
+        .bg-war {
+            background-color: #2c2c2c;
+        }
+        .btn-war {
+            background-color: #d17a22;
+            border-color: #d17a22;
+            color: #fff;
+        }
+        .btn-war:hover {
+            background-color: #b86a1c;
+            border-color: #b86a1c;
+            color: #fff;
+        }
+        .btn-outline-war {
+            border-color: #d17a22;
+            color: #d17a22;
+        }
+        .btn-outline-war:hover {
+            background-color: #d17a22;
+            color: #fff;
+        }
+        .text-war {
+            color: #d17a22;
+        }
+        .tanks-header {
+            background: url('https://staticfiles.warthunder.com/upload/image/0_2023/6_June/Wallpapers/1920x1080_fire_fury_tanks_logo_21b0ec77bac1a9a4e36a60bee87dbad1.jpg') no-repeat center;
+            background-size: cover;
+            padding: 100px 0;
+            position: relative;
+        }
+        .tanks-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .tanks-header-content {
+            position: relative;
+            z-index: 2;
+        }
+        .nation-filter {
+            margin-bottom: 2rem;
+        }
+        .nation-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .nation-icon:hover, .nation-icon.active {
+            border-color: #d17a22;
+            transform: scale(1.1);
+        }
+        .tier-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #d17a22;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .stats-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #444;
+            margin-bottom: 15px;
+        }
+        .stats-fill {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #d17a22;
+        }
+        .vehicle-class-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .tank-specs {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        .tank-specs span {
+            display: flex;
+            align-items: center;
+        }
+        .tank-specs i {
+            font-size: 1rem;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand text-war fw-bold" href="index.html">WAR THUNDER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Premium</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2 bg-dark text-light border-secondary" type="search" placeholder="Search ground vehicles..." aria-label="Search">
+                    <button class="btn btn-war" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ground Forces Header -->
+    <div class="tanks-header mb-5">
+        <div class="container tanks-header-content">
+            <h1 class="display-4 fw-bold">GROUND FORCES</h1>
+            <p class="lead">Command legendary tanks and armored vehicles from the early 20th century to modern MBTs.</p>
+        </div>
+    </div>
+
+    <!-- Vehicle Type Selection -->
+    <div class="container mb-5">
+        <ul class="nav nav-tabs" id="vehicleTypeTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active bg-dark text-war" id="light-tab" data-bs-toggle="tab" data-bs-target="#light" type="button" role="tab" aria-controls="light" aria-selected="true">Light Tanks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="medium-tab" data-bs-toggle="tab" data-bs-target="#medium" type="button" role="tab" aria-controls="medium" aria-selected="false">Medium Tanks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="heavy-tab" data-bs-toggle="tab" data-bs-target="#heavy" type="button" role="tab" aria-controls="heavy" aria-selected="false">Heavy Tanks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="td-tab" data-bs-toggle="tab" data-bs-target="#td" type="button" role="tab" aria-controls="td" aria-selected="false">Tank Destroyers</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="spaa-tab" data-bs-toggle="tab" data-bs-target="#spaa" type="button" role="tab" aria-controls="spaa" aria-selected="false">SPAA</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="premium-tab" data-bs-toggle="tab" data-bs-target="#premium" type="button" role="tab" aria-controls="premium" aria-selected="false">Premium</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Nation Filter -->
+    <div class="container mb-4">
+        <h5 class="mb-3">Filter by Nation</h5>
+        <div class="d-flex flex-wrap nation-filter">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_germany.png" alt="Germany" class="nation-icon active" title="Germany">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_ussr.png" alt="USSR" class="nation-icon" title="USSR">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_usa.png" alt="USA" class="nation-icon" title="USA">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_britain.png" alt="Britain" class="nation-icon" title="Britain">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_japan.png" alt="Japan" class="nation-icon" title="Japan">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_italy.png" alt="Italy" class="nation-icon" title="Italy">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_france.png" alt="France" class="nation-icon" title="France">
+            <img src="https://static.encyclopedia.warthunder.com/images/nation_sweden.png" alt="Sweden" class="nation-icon" title="Sweden">
+        </div>
+        <div class="mb-4">
+            <button class="btn btn-war me-2">Battle Rating: 1.0 - 11.0</button>
+            <button class="btn btn-outline-war">Reset Filters</button>
+        </div>
+    </div>
+
+    <!-- Ground Forces Display -->
+    <div class="container mb-5">
+        <div class="tab-content" id="vehicleTypeContent">
+            <div class="tab-pane fade show active" id="light" role="tabpanel" aria-labelledby="light-tab">
+                <div class="row">
+                    <!-- Light Tank Card 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_pzkpfw_II_ausf_c_main.png" class="card-img-top" alt="Pz.Kpfw. II Ausf. C">
+                                <span class="tier-badge">BR 1.7</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Pz.Kpfw. II Ausf. C</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 20mm KwK 30</span>
+                                    <span><i class="fas fa-shield-alt"></i> 30mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 40 km/h</span>
+                                </div>
+                                <p class="card-text">German light tank from the early stages of World War II, armed with a rapid-firing 20mm autocannon.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 35%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 65%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Tank Card 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_puma_main.png" class="card-img-top" alt="Sd.Kfz.234/2 Puma">
+                                <span class="tier-badge">BR 3.0</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Sd.Kfz.234/2 Puma</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 50mm KwK 39/1</span>
+                                    <span><i class="fas fa-shield-alt"></i> 30mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 85 km/h</span>
+                                </div>
+                                <p class="card-text">German 8-wheeled heavy armored car with good mobility and a powerful 50mm cannon.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 58%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 88%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Tank Card 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_begleitpanzer_57_main.png" class="card-img-top" alt="Begleitpanzer 57">
+                                <span class="tier-badge">BR 8.7</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Begleitpanzer 57</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 57mm autocannon</span>
+                                    <span><i class="fas fa-shield-alt"></i> 25mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 70 km/h</span>
+                                </div>
+                                <p class="card-text">German light tank prototype armed with a powerful 57 mm autocannon and ATGMs.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 78%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 80%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Tank Card 4 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_wiesel_1_main.png" class="card-img-top" alt="Wiesel 1A4">
+                                <span class="tier-badge">BR 7.0</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Wiesel 1A4</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 20mm RH-202</span>
+                                    <span><i class="fas fa-shield-alt"></i> 14mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 75 km/h</span>
+                                </div>
+                                <p class="card-text">German light airborne armored fighting vehicle with exceptional mobility but minimal armor.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 50%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 95%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Tank Card 5 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_radkampfwagen_90_main.png" class="card-img-top" alt="Radkampfwagen 90">
+                                <span class="tier-badge">BR 9.0</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Radkampfwagen 90</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 90mm Rh 503</span>
+                                    <span><i class="fas fa-shield-alt"></i> 35mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 103 km/h</span>
+                                </div>
+                                <p class="card-text">German 8-wheeled armored car with excellent mobility and a powerful 90mm gun.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 75%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 92%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Tank Card 6 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="position-relative">
+                                <img src="https://static.encyclopedia.warthunder.com/images/germ_gepard_main.png" class="card-img-top" alt="Flakpanzer Gepard">
+                                <span class="tier-badge">BR 8.0</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-war">Flakpanzer Gepard</h5>
+                                <div class="tank-specs">
+                                    <span><i class="fas fa-bullseye"></i> 2x 35mm KDA</span>
+                                    <span><i class="fas fa-shield-alt"></i> 25mm</span>
+                                    <span><i class="fas fa-tachometer-alt"></i> 65 km/h</span>
+                                </div>
+                                <p class="card-text">German self-propelled anti-aircraft gun with twin 35mm autocannons and radar guidance.</p>
+                                <div class="mb-3">
+                                    <small>Firepower</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 70%"></div>
+                                    </div>
+                                    <small>Mobility</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 75%"></div>
+                                    </div>
+                                    <small>Protection</small>
+                                    <div class="stats-bar">
+                                        <div class="stats-fill" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-war w-100">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Ground forces pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link bg-dark text-light border-secondary" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link bg-war border-war" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark text-light border-secondary" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Other Vehicle Types Content (Empty for now) -->
+            <div class="tab-pane fade" id="medium" role="tabpanel" aria-labelledby="medium-tab">
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-war">Medium Tanks</h4>
+                        <p>Change nation filter to view available medium tanks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="heavy" role="tabpanel" aria-labelledby="heavy-tab">
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-war">Heavy Tanks</h4>
+                        <p>Change nation filter to view available heavy tanks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="td" role="tabpanel" aria-labelledby="td-tab">
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-war">Tank Destroyers</h4>
+                        <p>Change nation filter to view available tank destroyers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="spaa" role="tabpanel" aria-labelledby="spaa-tab">
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-war">Anti-Aircraft Vehicles</h4>
+                        <p>Change nation filter to view available anti-aircraft vehicles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="premium" role="tabpanel" aria-labelledby="premium-tab">
+                <div class="row">
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-war">Premium Vehicles</h4>
+                        <p>Change nation filter to view available premium vehicles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Feature -->
+    <div class="container mb-5">
+        <div class="card bg-war">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4 class="text-white">Vehicle Comparison Tool</h4>
+                        <p class="mb-0">Compare the specifications and performance of different ground vehicles to find the perfect match for your playstyle.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-light">Launch Comparison Tool</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-war">War Thunder - Praktikum Bootstrap</h5>
+                    <p>Tugas Framework Bootstrap - Pemrograman Web</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 - War Thunder Project</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Optional: jQuery Slim -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</body>
+</html>

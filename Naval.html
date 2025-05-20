@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Thunder - Naval Forces</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+        }
+        .feature-icon {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .card {
+            transition: all 0.3s;
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border-color: #555;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(209, 122, 34, 0.2);
+            border-color: #d17a22;
+        }
+        .bg-war {
+            background-color: #2c2c2c;
+        }
+        .btn-war {
+            background-color: #d17a22;
+            border-color: #d17a22;
+            color: #fff;
+        }
+        .btn-war:hover {
+            background-color: #b86a1c;
+            border-color: #b86a1c;
+            color: #fff;
+        }
+        .btn-outline-war {
+            border-color: #d17a22;
+            color: #d17a22;
+        }
+        .btn-outline-war:hover {
+            background-color: #d17a22;
+            color: #fff;
+        }
+        .text-war {
+            color: #d17a22;
+        }
+        .naval-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://staticfiles.warthunder.com/upload/image/0_Wallpaper_Renders/Navy/1920x1080_art_marathon_imperial_flagship_logo_5f0790310cadb732fc015099800415b6.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 5rem 0;
+            margin-bottom: 2rem;
+        }
+        .ship-specs {
+            background-color: #2c2c2c;
+            border-left: 4px solid #d17a22;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .table-dark {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+        }
+        .progress {
+            height: 20px;
+            background-color: #444;
+        }
+        .progress-bar {
+            background-color: #d17a22;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand text-war fw-bold" href="#">WAR THUNDER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aircraft.html">Aircraft</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ground-Force.html">Ground Forces</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="naval.html">Naval</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Premium</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2 bg-dark text-light border-secondary" type="search" placeholder="Search vessels..." aria-label="Search">
+                    <button class="btn btn-war" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Naval Header -->
+    <div class="naval-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold">NAVAL FORCES</h1>
+                    <p class="lead">Command powerful warships and engage in epic naval battles across the world's oceans.</p>
+                    <p>From small patrol boats to mighty battleships and aircraft carriers, master naval warfare through the ages.</p>
+                    <a class="btn btn-war btn-lg me-2" href="#">Play Now</a>
+                    <a class="btn btn-outline-light btn-lg" href="#">Naval Tutorial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Naval Classes Overview -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">NAVAL VESSEL CLASSES</h2>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="https://static.encyclopedia.warthunder.com/images/italy_destroyer_commandante_medaglie_d_oro.png" alt="Destroyers" class="feature-icon">
+                        <h5 class="card-title text-war">Destroyers</h5>
+                        <p class="card-text">Fast and versatile warships equipped with torpedoes and multiple gun batteries.</p>
+                        <a href="#" class="btn btn-outline-war">View Destroyers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="https://static.encyclopedia.warthunder.com/images/ussr_cruiser_sverdlov.png" alt="Cruisers" class="feature-icon">
+                        <h5 class="card-title text-war">Cruisers</h5>
+                        <p class="card-text">Powerful medium warships with heavy armor and formidable artillery.</p>
+                        <a href="#" class="btn btn-outline-war">View Cruisers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="https://static.encyclopedia.warthunder.com/images/germ_battleship_scharnhorst.png" alt="Battleships" class="feature-icon">
+                        <h5 class="card-title text-war">Battleships</h5>
+                        <p class="card-text">Massive ships with the heaviest armor and largest caliber naval guns.</p>
+                        <a href="#" class="btn btn-outline-war">View Battleships</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <img src="https://static.encyclopedia.warthunder.com/images/usa_torpedo_boat_pt-3.png" alt="Coastal Forces" class="feature-icon">
+                        <h5 class="card-title text-war">Coastal Forces</h5>
+                        <p class="card-text">Small, agile boats perfect for coastal operations and quick strikes.</p>
+                        <a href="#" class="btn btn-outline-war">View Coastal Forces</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Vessel Section -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">FEATURED VESSEL</h2>
+        <div class="card bg-war">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="https://static.encyclopedia.warthunder.com/images/usa_battleship_north_carolina_bb55.png" class="img-fluid rounded-start" alt="USS North Carolina">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h3 class="card-title text-war">USS North Carolina (BB-55)</h3>
+                        <div class="mb-3">
+                            <span class="badge bg-war me-2">Battle Rating: 6.3</span>
+                            <span class="badge bg-war me-2">Nation: USA</span>
+                            <span class="badge bg-war">Premium: No</span>
+                        </div>
+                        <p class="card-text">The USS North Carolina (BB-55) was the lead ship of the North Carolina-class battleships, serving in the Pacific Theater during World War II. Armed with nine 16-inch guns and twenty 5-inch dual-purpose guns, she was a formidable force in naval engagements.</p>
+                        
+                        <div class="ship-specs mt-4">
+                            <h5>Specifications</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Displacement:</strong> 44,800 tons</p>
+                                    <p><strong>Length:</strong> 222 meters</p>
+                                    <p><strong>Speed:</strong> 28 knots</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Main Battery:</strong> 9x 16-inch guns</p>
+                                    <p><strong>Secondary Battery:</strong> 20x 5-inch guns</p>
+                                    <p><strong>AA Armament:</strong> Multiple 40mm and 20mm</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn btn-war mt-3">View in Tech Tree</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nation Naval Forces -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">NATION NAVAL FORCES</h2>
+        <ul class="nav nav-tabs" id="nationTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active bg-dark text-war" id="usa-tab" data-bs-toggle="tab" data-bs-target="#usa" type="button" role="tab" aria-selected="true">USA</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="germany-tab" data-bs-toggle="tab" data-bs-target="#germany" type="button" role="tab" aria-selected="false">Germany</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="japan-tab" data-bs-toggle="tab" data-bs-target="#japan" type="button" role="tab" aria-selected="false">Japan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="britain-tab" data-bs-toggle="tab" data-bs-target="#britain" type="button" role="tab" aria-selected="false">Britain</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link bg-dark text-war" id="ussr-tab" data-bs-toggle="tab" data-bs-target="#ussr" type="button" role="tab" aria-selected="false">USSR</button>
+            </li>
+        </ul>
+        <div class="tab-content mt-3" id="nationTabsContent">
+            <div class="tab-pane fade show active" id="usa" role="tabpanel" aria-labelledby="usa-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-war">US Navy</h4>
+                        <p>The US Navy boasts a diverse range of vessels, from nimble patrol boats to massive aircraft carriers. American vessels are known for their balanced performance, excellent anti-aircraft capability, and powerful main batteries.</p>
+                        <h5>Notable Vessels:</h5>
+                        <ul>
+                            <li>USS Iowa (BB-61)</li>
+                            <li>USS Fletcher (DD-445)</li>
+                            <li>USS Cleveland (CL-55)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-dark table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Firepower</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Armor</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Anti-Air</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="germany" role="tabpanel" aria-labelledby="germany-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-war">Kriegsmarine</h4>
+                        <p>The German Navy features vessels with excellent firepower and armor. German ships are characterized by their powerful guns, good armor protection, and effective torpedo armaments on their destroyers.</p>
+                        <h5>Notable Vessels:</h5>
+                        <ul>
+                            <li>Bismarck</li>
+                            <li>Admiral Hipper</li>
+                            <li>Z-23 Destroyer</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-dark table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Firepower</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Armor</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Anti-Air</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="japan" role="tabpanel" aria-labelledby="japan-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-war">Imperial Japanese Navy</h4>
+                        <p>The Japanese Navy excels in torpedo warfare and long-range gunnery. Their vessels feature powerful torpedoes, good speed, and excellent main batteries with high accuracy.</p>
+                        <h5>Notable Vessels:</h5>
+                        <ul>
+                            <li>Yamato</li>
+                            <li>Mogami</li>
+                            <li>Yugumo</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-dark table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Firepower</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Armor</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Torpedoes</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="britain" role="tabpanel" aria-labelledby="britain-tab">
+                <!-- British Navy Content -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-war">Royal Navy</h4>
+                        <p>The Royal Navy features well-rounded vessels with good firepower and maneuverability. British ships are known for their balanced performance and versatility in combat situations.</p>
+                        <h5>Notable Vessels:</h5>
+                        <ul>
+                            <li>HMS King George V</li>
+                            <li>HMS Belfast</li>
+                            <li>HMS Tribal</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-dark table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Firepower</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Armor</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Versatility</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ussr" role="tabpanel" aria-labelledby="ussr-tab">
+                <!-- Soviet Navy Content -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-war">Soviet Navy</h4>
+                        <p>The Soviet Navy features ships with powerful main batteries and good speed. Soviet vessels are characterized by their high firepower but often have less armor protection compared to other nations.</p>
+                        <h5>Notable Vessels:</h5>
+                        <ul>
+                            <li>Kirov</li>
+                            <li>Sverdlov</li>
+                            <li>Tashkent</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-dark table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Characteristic</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Firepower</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Armor</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Torpedo Protection</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Naval Combat Tips -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">NAVAL COMBAT TIPS</h2>
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-war">Ship Positioning</h5>
+                        <p class="card-text">Always angle your ship to reduce the chance of enemy shells penetrating your armor. Presenting your broadside makes you an easy target for enemy gunners.</p>
+                        <p class="card-text">Use islands and terrain features to conceal your movements and protect portions of your vessel from enemy fire.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-war">Gunnery Skills</h5>
+                        <p class="card-text">Target enemy vessels at their waterline where armor is typically weaker. Successful hits in these areas can cause flooding and critical damage.</p>
+                        <p class="card-text">For larger ships, aim for ammunition storage areas or engine rooms to maximize damage potential.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-war">Torpedo Tactics</h5>
+                        <p class="card-text">Use torpedoes strategically by launching them in corridors where enemy ships are likely to pass or during close engagements.</p>
+                        <p class="card-text">Remember that torpedo detection is difficult in rough seas or poor visibility conditions. Use this to your advantage!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modes -->
+    <div class="container mb-5">
+        <h2 class="text-center text-war mb-4">NAVAL GAME MODES</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-war h-100">
+                    <div class="card-body text-center">
+                        <h4 class="text-war">Naval Arcade Battles</h4>
+                        <p>Fast-paced naval combat with simplified mechanics. Perfect for new captains to learn the basics of naval warfare.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ Enhanced ship maneuverability</li>
+                            <li>✓ Simplified ballistics</li>
+                            <li>✓ Enemy ship indicators</li>
+                            <li>✓ Faster reload times</li>
+                        </ul>
+                        <a href="#" class="btn btn-war mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-war h-100">
+                    <div class="card-body text-center">
+                        <h4 class="text-war">Naval Realistic Battles</h4>
+                        <p>More challenging gameplay with realistic physics and combat mechanics for experienced captains.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ Realistic ballistics</li>
+                            <li>✓ Historical accuracy</li>
+                            <li>✓ No enemy indicators</li>
+                            <li>✓ Authentic ship performance</li>
+                        </ul>
+                        <a href="#" class="btn btn-war mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-war h-100">
+                    <div class="card-body text-center">
+                        <h4 class="text-war">Naval Simulator Battles</h4>
+                        <p>The ultimate naval challenge with the most realistic simulation of naval warfare.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ Full simulation physics</li>
